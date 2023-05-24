@@ -1,3 +1,5 @@
+import 'package:cse_routine_web/Screens/updateing.dart';
+import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'global.dart' as globe;
 import 'package:excel/excel.dart';
@@ -201,7 +203,9 @@ getData() async {
   var sheet3 = excel['Faculty Contact Info'];
   List<String> alpha = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'];
   globe.updated = sheet.cell(CellIndex.indexByString('I4')).value.toString();
-
+  if (globe.updated.length < 10) {
+    globe.updated = globe.updated.padRight(10 - globe.updated.length);
+  }
   for (int i = 0; i < 10; i++) {
     for (int x = 1; x < 51; x++) {
       if (i == 0 && x <= sheet2.maxRows) {
@@ -346,5 +350,13 @@ void addRoutineEmpty(dayRoutineText, List<Widget> dayRoutineWidgets) {
         ),
       ),
     );
+  }
+}
+
+getRealData() async {
+  try {
+    await getData();
+  } catch (e) {
+    Get.to(const NoSearchResultFound());
   }
 }

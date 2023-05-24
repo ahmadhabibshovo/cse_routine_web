@@ -4,7 +4,6 @@ import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:cse_routine_web/global.dart' as globe;
 import 'package:cse_routine_web/Componants/rounded_button.dart';
-
 import 'package:cse_routine_web/functions.dart';
 import 'navigator_2.dart';
 
@@ -23,7 +22,7 @@ class _NavigateState extends State<Navigate> {
 
     double textFontSize = height / 43;
     return FutureBuilder<dynamic>(
-        future: getData(), // async work
+        future: getRealData(), // async work
         builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
           return Title(
             color: globe.color,
@@ -49,7 +48,7 @@ class _NavigateState extends State<Navigate> {
                           Container(
                             margin: const EdgeInsets.only(left: 16),
                             child: Text(
-                              " User : ${globe.batch}\nUpadetd on : ${globe.updated.substring(0, 10)}",
+                              " User : ${globe.batch}\nUpadetd on : ${globe.updated}",
                               textAlign: TextAlign.center,
                               style: const TextStyle(fontSize: 20),
                             ),
