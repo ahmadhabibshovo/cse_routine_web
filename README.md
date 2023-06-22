@@ -1,16 +1,21 @@
-# cse_routine_web
+# Miu Routine
+## _Get Routine from here_
 
-A new Flutter project.
 
-## Getting Started
 
-This project is a starting point for a Flutter application.
+If routine changes 
+Dont worry.
+Check latest routine anytime
 
-A few resources to get you started if this is your first Flutter project:
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## Features
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- Teacher or student can check Routine
+- Time
+- Room
+- Course Teacher
+- Course
+
+## Website
+http://miucse.netlify.app
+![alt text](https://i.ibb.co/4Y8PNp2/image.png)
