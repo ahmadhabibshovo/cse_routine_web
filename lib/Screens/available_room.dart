@@ -185,15 +185,13 @@ class _AvailableRoomsState extends State<AvailableRooms> {
                             data = showWidget();
                           });
                         },
-                        child: Expanded(
-                          child: Card(
-                            color: selected == e
-                                ? ThemeData().primaryColor
-                                : Colors.blueGrey,
-                            child: Padding(
-                              padding: const EdgeInsets.all(20),
-                              child: Text(e),
-                            ),
+                        child: Card(
+                          color: selected == e
+                              ? ThemeData().primaryColor
+                              : Colors.blueGrey,
+                          child: Padding(
+                            padding: const EdgeInsets.all(20),
+                            child: Text(e),
                           ),
                         ),
                       ),
@@ -258,26 +256,28 @@ class _AvailableRoomsState extends State<AvailableRooms> {
                 ),
               ),
               Expanded(
-                child: GridView.builder(
-                    gridDelegate:
-                        const SliverGridDelegateWithMaxCrossAxisExtent(
-                            maxCrossAxisExtent: 200,
-                            childAspectRatio: 3 / 2,
-                            crossAxisSpacing: 20,
-                            mainAxisSpacing: 20),
-                    itemCount: data.length,
-                    itemBuilder: (BuildContext context, int x) {
-                      return Card(
-                        child: Center(
-                          child: Text(
-                            data[x],
-                            textAlign: TextAlign.center,
-                            style: const TextStyle(fontSize: 18),
+                child: SizedBox(
+                  child: GridView.builder(
+                      gridDelegate:
+                          const SliverGridDelegateWithMaxCrossAxisExtent(
+                              maxCrossAxisExtent: 200,
+                              childAspectRatio: 3 / 2,
+                              crossAxisSpacing: 20,
+                              mainAxisSpacing: 20),
+                      itemCount: data.length,
+                      itemBuilder: (BuildContext context, int x) {
+                        return Card(
+                          child: Center(
+                            child: Text(
+                              data[x],
+                              textAlign: TextAlign.center,
+                              style: const TextStyle(fontSize: 18),
+                            ),
                           ),
-                        ),
-                      );
-                    }),
-              )
+                        );
+                      }),
+                ),
+              ),
             ]),
     );
   }

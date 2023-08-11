@@ -18,12 +18,12 @@ class _MenuState extends State<Menu> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: const Center(child: Text("MIU CONVERGENCE")),
+          title: const Center(child: Text("SMART MIU")),
         ),
         body: Column(
           children: [
             // const Row(
-            //   children: [Text("Manarat International Universdity")],
+            //   children: [Text("Manarat International University")],
             // ),
             Expanded(
               child: GridView.count(

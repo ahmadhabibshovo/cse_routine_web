@@ -44,11 +44,12 @@ class SplashPageState extends State<SplashPage> {
         color: global.color,
         title: "Loading",
         child: EasySplashScreen(
+          backgroundColor: Colors.black12,
           loaderColor: Colors.white,
           logo: const Image(
             image: AssetImage('assets/transparent.png'),
           ),
-          backgroundImage: const AssetImage("assets/Daily-Routine.png"),
+          // backgroundImage: const AssetImage("assets/Daily-Routine.png"),
           title: const Text(
             "",
           ),

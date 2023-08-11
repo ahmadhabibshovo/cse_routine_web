@@ -48,7 +48,8 @@ class TSplashPageState extends State<TSplashPage> {
           logo: const Image(
             image: AssetImage('assets/transparent.png'),
           ),
-          backgroundImage: const AssetImage("assets/Daily-Routine.png"),
+          backgroundColor: Colors.black12,
+          // backgroundImage: const AssetImage("assets/Daily-Routine.png"),
           title: const Text(
             "",
           ),

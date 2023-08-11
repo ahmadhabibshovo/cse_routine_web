@@ -169,19 +169,19 @@ class _NavigateState extends State<Navigate> {
                         ),
                       ),
                     ),
-                    Expanded(
-                      flex: 2,
-                      child: ElevatedButton(
-                        onPressed: () async {
-                          launchUrl(Uri.parse(
-                              'https://ahmadhabibshovo.github.io/#section-contact'));
-                        },
-                        child: const Text(
-                          'Made with love by Ahmmad Habib\nClick here for contact',
-                          textAlign: TextAlign.center,
-                        ),
-                      ),
-                    )
+                    // Expanded(
+                    //   flex: 2,
+                    //   child: ElevatedButton(
+                    //     onPressed: () async {
+                    //       launchUrl(Uri.parse(
+                    //           'https://ahmadhabibshovo.github.io/#section-contact'));
+                    //     },
+                    //     child: const Text(
+                    //       'Made with love by Ahmmad Habib\nClick here for contact',
+                    //       textAlign: TextAlign.center,
+                    //     ),
+                    //   ),
+                    // )
                   ],
                 ),
               ),
