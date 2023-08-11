@@ -208,6 +208,7 @@ getData() async {
   }
   for (int i = 0; i < 10; i++) {
     for (int x = 1; x < 51; x++) {
+      //Geting Course Name and Number.................................................
       if (i == 0 && x <= sheet2.maxRows) {
         globe.courseNameJson.addAll({
           sheet2
@@ -218,9 +219,10 @@ getData() async {
               sheet2
                   .cell(CellIndex.indexByString('${alpha[i + 1]}$x'))
                   .value
-                  .toString()
+                  .toString(),
         });
       }
+      //  Geting Teacher name and number
       if (i == 1 && x <= sheet3.maxRows) {
         globe.teacherNameJson.addAll({
           sheet3
@@ -356,6 +358,123 @@ void addRoutineEmpty(dayRoutineText, List<Widget> dayRoutineWidgets) {
 getRealData() async {
   try {
     await getData();
+  } catch (e) {
+    Get.to(const NoSearchResultFound());
+  }
+}
+
+tGetData() async {
+  addTime(time) {
+    String time2 = time.substring(6, 8);
+    late String timeUpdated;
+    if (time2 != '12') {
+      int time1 = int.parse(time2);
+      time1++;
+      timeUpdated = time1.toString();
+    } else {
+      timeUpdated = '01';
+    }
+
+    timeUpdated = time.replaceRange(6, 8, timeUpdated);
+    return timeUpdated;
+  }
+
+  final prefs = await SharedPreferences.getInstance();
+
+  final String? batch = prefs.getString('ID');
+  globe.batch = batch;
+  var excel = Excel.decodeBytes(globe.bytes);
+  var sheet = excel['Routine'];
+  var sheet2 = excel['Course Info'];
+  var sheet3 = excel['Faculty Contact Info'];
+  List<String> alpha = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'];
+  globe.updated = sheet.cell(CellIndex.indexByString('I4')).value.toString();
+  if (globe.updated.length < 10) {
+    globe.updated = globe.updated.padRight(10 - globe.updated.length);
+  }
+  for (int i = 0; i < 10; i++) {
+    for (int x = 1; x < 51; x++) {
+      //Geting Course Name and Number.................................................
+      if (i == 0 && x <= sheet2.maxRows) {
+        globe.courseNameJson.addAll({
+          sheet2
+                  .cell(CellIndex.indexByString('${alpha[i]}$x'))
+                  .value
+                  .toString()
+                  .replaceAll(' ', ''):
+              sheet2
+                  .cell(CellIndex.indexByString('${alpha[i + 1]}$x'))
+                  .value
+                  .toString(),
+        });
+      }
+      //  Geting Teacher name and number
+      if (i == 1 && x <= sheet3.maxRows) {
+        globe.teacherNameJson.addAll({
+          sheet3
+                  .cell(CellIndex.indexByString('${alpha[i + 2]}$x'))
+                  .value
+                  .toString()
+                  .replaceAll(' ', ''):
+              sheet3
+                  .cell(CellIndex.indexByString('${alpha[i]}$x'))
+                  .value
+                  .toString()
+        });
+      }
+      String cell = sheet
+          .cell(CellIndex.indexByString('${alpha[i]}$x'))
+          .value
+          .toString()
+          .replaceAll(' ', '');
+
+      if ((cell.contains(batch.toString()) && cell.length > 7)) {
+        String day =
+            sheet.cell(CellIndex.indexByString('A$x')).value.toString();
+        //Get DayNames
+        if (day == "null") {
+          int y = x;
+          for (y; y >= 0; y--) {
+            day = sheet.cell(CellIndex.indexByString('A$y')).value.toString();
+            if (day != "null") {
+              break;
+            }
+          }
+        }
+        String time = sheet
+            .cell(CellIndex.indexByString('${alpha[i]}5'))
+            .value
+            .toString();
+        String room =
+            sheet.cell(CellIndex.indexByString('B$x')).value.toString();
+
+        //Valid Times
+        if (cell.contains('.')) {
+          time = addTime(time);
+        }
+        addData(day, time, room, cell, "SAT", globe.satRoutine);
+        addData(day, time, room, cell, "SUN", globe.sunRoutine);
+        addData(day, time, room, cell, "MON", globe.monRoutine);
+        addData(day, time, room, cell, "TUE", globe.tueRoutine);
+        addData(day, time, room, cell, "WED", globe.wedRoutine);
+      }
+    }
+  }
+  addRoutine(globe.satRoutine, globe.satRoutineWidgets);
+  addRoutine(globe.sunRoutine, globe.sunRoutineWidgets);
+  addRoutine(globe.monRoutine, globe.monRoutineWidgets);
+  addRoutine(globe.tueRoutine, globe.tueRoutineWidgets);
+  addRoutine(globe.wedRoutine, globe.wedRoutineWidgets);
+  addRoutineEmpty(globe.satRoutineEmpty, globe.satRoutineWidgetsEmpty);
+  addRoutineEmpty(globe.sunRoutineEmpty, globe.sunRoutineWidgetsEmpty);
+  addRoutineEmpty(globe.monRoutineEmpty, globe.monRoutineWidgetsEmpty);
+  addRoutineEmpty(globe.tueRoutineEmpty, globe.tueRoutineWidgetsEmpty);
+  addRoutineEmpty(globe.wedRoutineEmpty, globe.wedRoutineWidgetsEmpty);
+}
+
+tGetRealData() async {
+  try {
+    await tGetData();
   } catch (e) {
     Get.to(const NoSearchResultFound());
   }

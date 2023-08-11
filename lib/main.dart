@@ -1,4 +1,4 @@
-import 'package:cse_routine_web/Screens/splash_screen.dart';
+import 'package:cse_routine_web/Screens/main_menu.dart';
 import 'package:flutter/material.dart';
 import 'global.dart' as global;
 import 'package:get/get.dart';
@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
       color: global.color,
       title: 'MIU Routine APP',
       theme: ThemeData.dark(useMaterial3: true),
-      home: const SplashPage(),
+      home: const Menu(),
     );
   }
 }

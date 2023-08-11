@@ -26,6 +26,8 @@ List<Widget> sunRoutineWidgetsEmpty = [];
 List<Widget> monRoutineWidgetsEmpty = [];
 List<Widget> tueRoutineWidgetsEmpty = [];
 List<Widget> wedRoutineWidgetsEmpty = [];
+List<dynamic> contacts = [];
+List<dynamic> course = [];
 var section;
 var retake;
 Color color = const Color.fromARGB(255, 28, 27, 31);

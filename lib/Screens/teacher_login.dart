@@ -5,16 +5,16 @@ import 'navigator.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:cse_routine_web/global.dart' as globe;
 
-class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+class TeacherLogin extends StatefulWidget {
+  const TeacherLogin({super.key});
 
   @override
-  State<HomePage> createState() => _HomePageState();
+  State<TeacherLogin> createState() => _TeacherLoginState();
 }
 
 String? path;
 
-class _HomePageState extends State<HomePage> {
+class _TeacherLoginState extends State<TeacherLogin> {
   final TextEditingController nameController = TextEditingController();
   final TextEditingController retakeController = TextEditingController();
 
@@ -92,23 +92,27 @@ class _HomePageState extends State<HomePage> {
                                 //   'Section',
                                 // ),
                                 // const SizedBox(height: 10.0),
-                                Wrap(
-                                  spacing: 5.0,
-                                  children: List<Widget>.generate(
-                                    3,
-                                    (int index) {
-                                      return ChoiceChip(
-                                        selectedColor: Colors.blueGrey.shade400,
-                                        label: Text(item[index]),
-                                        selected: _value == index,
-                                        onSelected: (bool selected) {
-                                          setState(() {
-                                            _value = selected ? index : null;
-                                          });
-                                        },
-                                      );
-                                    },
-                                  ).toList(),
+                                Visibility(
+                                  visible: false,
+                                  child: Wrap(
+                                    spacing: 5.0,
+                                    children: List<Widget>.generate(
+                                      3,
+                                      (int index) {
+                                        return ChoiceChip(
+                                          selectedColor:
+                                              Colors.blueGrey.shade400,
+                                          label: Text(item[index]),
+                                          selected: _value == index,
+                                          onSelected: (bool selected) {
+                                            setState(() {
+                                              _value = selected ? index : null;
+                                            });
+                                          },
+                                        );
+                                      },
+                                    ).toList(),
+                                  ),
                                 ),
                               ],
                             ),
@@ -142,8 +146,9 @@ class _HomePageState extends State<HomePage> {
                                         TextCapitalization.characters,
                                     controller: nameController,
                                     decoration: const InputDecoration(
-                                        labelText: 'Enter Your Batch No',
-                                        hintText: 'Ex.  50 , 56 , 60',
+                                        labelText:
+                                            'Enter Teachers Abbreviation',
+                                        hintText: 'SZ || NH || ZH',
                                         labelStyle:
                                             TextStyle(color: Colors.white),
                                         hintStyle:
@@ -151,29 +156,33 @@ class _HomePageState extends State<HomePage> {
                                         border: InputBorder.none),
                                   ),
                                 ),
-                                Container(
-                                  padding: const EdgeInsets.all(10),
-                                  decoration: const BoxDecoration(
-                                      border: Border(
-                                          bottom: BorderSide(
-                                              color: Colors.transparent))),
-                                  child: TextField(
-                                    controller: retakeController,
-                                    onChanged: (e) {
-                                      retakeController.text = e.toUpperCase();
-                                      retakeController.selection =
-                                          TextSelection.collapsed(
-                                              offset:
-                                                  retakeController.text.length);
-                                    },
-                                    decoration: const InputDecoration(
-                                      labelText: 'Retake or Extra Course',
-                                      hintText: 'Ex. CSE314 or  CSE314:CSE443 ',
-                                      hintStyle:
-                                          TextStyle(color: Colors.white38),
-                                      labelStyle:
-                                          TextStyle(color: Colors.white),
-                                      border: InputBorder.none,
+                                Visibility(
+                                  visible: false,
+                                  child: Container(
+                                    padding: const EdgeInsets.all(10),
+                                    decoration: const BoxDecoration(
+                                        border: Border(
+                                            bottom: BorderSide(
+                                                color: Colors.transparent))),
+                                    child: TextField(
+                                      controller: retakeController,
+                                      onChanged: (e) {
+                                        retakeController.text = e.toUpperCase();
+                                        retakeController.selection =
+                                            TextSelection.collapsed(
+                                                offset: retakeController
+                                                    .text.length);
+                                      },
+                                      decoration: const InputDecoration(
+                                        labelText: 'Retake or Extra Course',
+                                        hintText:
+                                            'Ex. CSE314 or  CSE314:CSE443 ',
+                                        hintStyle:
+                                            TextStyle(color: Colors.white38),
+                                        labelStyle:
+                                            TextStyle(color: Colors.white),
+                                        border: InputBorder.none,
+                                      ),
                                     ),
                                   ),
                                 ),
