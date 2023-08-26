@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       color: global.color,
-      title: 'MIU Routine APP',
+      title: 'Student Companion',
       theme: ThemeData.dark(useMaterial3: true),
       home: const Menu(),
     );

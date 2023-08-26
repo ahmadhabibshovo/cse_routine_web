@@ -47,6 +47,7 @@ dependencies:
   cached_network_image: ^3.2.3
   intl: ^0.18.1
   loadingkit_flutter: ^0.0.2
+  get_cli: ^1.8.1
 
 dev_dependencies:
   flutter_test:

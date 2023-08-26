@@ -1,4 +1,4 @@
-import 'package:cse_routine_web/Screens/login_screen.dart';
+import 'package:cse_routine_web/Screens/main_menu.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -65,7 +65,7 @@ class _NavigateState extends State<Navigate> {
                                   ),
                                 ),
                                 onPressed: () async {
-                                  Get.offAll(const HomePage());
+                                  Get.offAll(const Menu());
                                   final prefs =
                                       await SharedPreferences.getInstance();
                                   prefs.clear();

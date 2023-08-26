@@ -54,6 +54,9 @@ class _CourseCodeState extends State<CourseCode> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: const Center(child: Text("Course Info")),
+      ),
       body: !_lodding
           ? const Center(
               child: FlutterLoading(

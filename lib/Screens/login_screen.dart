@@ -1,3 +1,4 @@
+import 'package:cse_routine_web/Screens/main_menu.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -39,6 +40,14 @@ class _HomePageState extends State<HomePage> {
       color: globe.color,
       title: "Login Page",
       child: Scaffold(
+        appBar: AppBar(
+          title: const Center(child: Text("Student Routine")),
+          leading: IconButton(
+              onPressed: () {
+                Get.to(const Menu());
+              },
+              icon: const Icon(Icons.arrow_back_ios)),
+        ),
         body: Container(
           width: double.infinity,
           decoration: const BoxDecoration(

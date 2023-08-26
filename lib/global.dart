@@ -33,3 +33,4 @@ var retake;
 Color color = const Color.fromARGB(255, 28, 27, 31);
 var courseNameJson = {};
 var teacherNameJson = {};
+String busscimg = "";

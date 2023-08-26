@@ -1,4 +1,5 @@
 import 'package:cse_routine_web/Screens/available_room.dart';
+import 'package:cse_routine_web/Screens/bus_schedule.dart';
 import 'package:cse_routine_web/Screens/contacts.dart';
 import 'package:cse_routine_web/Screens/course_code.dart';
 import 'package:cse_routine_web/Screens/splash_screen.dart';
@@ -18,7 +19,7 @@ class _MenuState extends State<Menu> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: const Center(child: Text("SMART MIU")),
+          title: const Center(child: Text("Student Companion")),
         ),
         body: Column(
           children: [
@@ -96,7 +97,7 @@ class _MenuState extends State<Menu> {
                             Icons.contacts,
                             size: 80,
                           ),
-                          Text("Teachers Contacts")
+                          Text("Contacts")
                         ],
                       ),
                     ),
@@ -120,7 +121,9 @@ class _MenuState extends State<Menu> {
                     ),
                   ),
                   InkWell(
-                    onTap: () {},
+                    onTap: () {
+                      Get.to(const BusSc());
+                    },
                     child: const Card(
                       color: Colors.transparent,
                       child: Column(

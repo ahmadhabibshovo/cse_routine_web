@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:cse_routine_web/global.dart' as globe;
 import 'package:excel/excel.dart';
-import 'package:cse_routine_web/global.dart' as global;
+
 import 'package:cse_routine_web/functions.dart';
 import 'package:loadingkit_flutter/loadingkit_flutter.dart';
 
@@ -16,7 +16,7 @@ final TextEditingController _searchController = TextEditingController();
 
 class _ContactsState extends State<Contacts> {
   Future download() async {
-    global.bytes = await downloadFile();
+    globe.bytes = await downloadFile();
     var excel = Excel.decodeBytes(globe.bytes);
     var sheet3 = excel['Faculty Contact Info'];
     List<String> alpha = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'];
@@ -68,6 +68,12 @@ class _ContactsState extends State<Contacts> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: const Center(
+            child: Text(
+          "Contact List",
+        )),
+      ),
       body: !load
           ? const Center(
               child: FlutterLoading(
