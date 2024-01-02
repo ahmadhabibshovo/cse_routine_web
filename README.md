@@ -17,5 +17,5 @@ Check latest routine anytime
 - Course
 
 ## Website
-[http://miucse.netlify.app](https://studentcompanion.netlify.app/)
+[http://miucse.netlify.app](https://studentcompanion.netlify.app]
 ![alt text](https://i.ibb.co/4Y8PNp2/image.png)
